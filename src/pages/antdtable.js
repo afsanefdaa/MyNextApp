@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Table, Input, Button, Icon } from 'antd';
 import 'antd/dist/antd.less';
-
-
-
 import Highlighter from 'react-highlight-words';
+
 
 const data = [
     {
@@ -33,34 +31,29 @@ const data = [
     },
 ];
 
-class Antdtable extends Component {
+export default () => {
+    const columns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+        },
+        {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+        },
+    ];
 
-    render() {
-        const columns = [
-            {
-                title: 'Name',
-                dataIndex: 'name',
-                key: 'name',
-            },
-            {
-                title: 'Age',
-                dataIndex: 'age',
-                key: 'age',
-            },
-            {
-                title: 'Address',
-                dataIndex: 'address',
-                key: 'address',
-            },
-        ];
-
-        return(
-            <>
-                <h1>Table</h1>
-                <Table columns={columns} dataSource={data} />
-            </>
-        );
-    }
+    return(
+        <>
+            <h1>Table</h1>
+            <Table columns={columns} dataSource={data} />
+        </>
+    );
 }
-
-export default Antdtable;

@@ -1,7 +1,7 @@
 {
   "name": "MyNextApp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Base Project For Next",
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
@@ -9,13 +9,16 @@
     "start": "next start ./src",
     "cypress": "cypress open"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "learning",
+    "nextjs",
+    "reactjs"
+  ],
+  "author": "Afsane Fadaei",
   "license": "ISC",
   "dependencies": {
     "@stomp/stompjs": "^5.4.2",
     "@zeit/next-css": "^1.0.1",
-    "@zeit/next-less": "^1.0.1",
     "antd": "^3.20.7",
     "axios": "^0.19.0",
     "cypress": "^3.4.1",
@@ -29,7 +32,9 @@
     "websocket": "^1.0.29"
   },
   "devDependencies": {
+    "@zeit/next-less": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
-    "next-compose-plugins": "^2.2.0"
+    "next-compose-plugins": "^2.2.0",
+    "null-loader": "^3.0.0"
   }
 }
