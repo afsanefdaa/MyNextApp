@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-import { Table, Input, Button, Icon } from 'antd';
+import { Table } from 'antd';
 import 'antd/dist/antd.less';
-import Highlighter from 'react-highlight-words';
-
 
 const data = [
     {
