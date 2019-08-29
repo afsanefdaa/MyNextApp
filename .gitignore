@@ -4,3 +4,4 @@ yarn-error.log
 src/build
 yarn.lock
 .DS_Store
+.eslintrc
