@@ -1,6 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import Stomp from '@stomp/stompjs';
-import WebSocket from './../component/websocket';
 
 var url = "wss://ws.weatherflow.com/swd/data";
 
@@ -39,7 +38,6 @@ class WebSocketPage extends Component {
         return (
             <div>
                 <p>WebSocket</p>
-                <WebSocket />
             </div>
         );
     }

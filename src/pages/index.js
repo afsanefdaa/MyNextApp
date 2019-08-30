@@ -1,13 +1,12 @@
-// This is the Link API
-import Link from 'next/link';
+import React, { Component } from 'react';
 
-const Index = () => (
-    <div>
-        <Link href="/about">
-            <a>About Page</a>
-        </Link>
-        <p>Hello Next.js</p>
-    </div>
-);
+class Index extends Component {
+
+  render() {
+    return (
+      <h1>Welcome</h1>
+    );
+  }
+}
 
 export default Index;

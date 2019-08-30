@@ -1,6 +1,6 @@
 describe('My First Test', function() {
     it('Visits the Kitchen Sink', function() {
-        cy.visit('localhost:3000/cypress');
+        cy.visit('localhost:3000/test/cypress');
         cy.get('input')
             .type('Hello, World')
             .invoke('val')
