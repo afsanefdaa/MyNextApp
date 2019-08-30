@@ -15,8 +15,6 @@ app.prepare()
 //Start Express server and serve the
     .then(() => {
         const server = express()
-        server.get("/crouter/:cat", (req, res) => app.render(req, res, `/crouter`));
-        server.get("/crouter/:cat/:color", (req, res) => app.render(req, res, `/crouter`));
         server.get('*', (req, res) => {
             return handle(req, res)
         })

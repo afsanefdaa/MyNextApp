@@ -51,7 +51,7 @@ const CustomSider = () => {
             </span>
           }
         >
-          <Menu.Item key="chat"><Link href="/chat" as="/chat">Chat</Link></Menu.Item>
+          <Menu.Item key="weather"><Link href="/weather" as="/weather">Weather API</Link></Menu.Item>
         </SubMenu>
         <SubMenu
           key="antd"
@@ -63,6 +63,17 @@ const CustomSider = () => {
           }
         >
           <Menu.Item key="tableSearch"><Link href="/antd/[segment]" as="/antd/tableSearch">Table Header Search</Link></Menu.Item>
+        </SubMenu>
+        <SubMenu
+          key="hoc"
+          title={
+            <span>
+                <Icon type="coffee" />
+                HOC
+            </span>
+          }
+        >
+          <Menu.Item key="counterHoc"><Link href="/hoc" as="/hoc">Counter HOC</Link></Menu.Item>
         </SubMenu>
       </Menu>
     </Sider>

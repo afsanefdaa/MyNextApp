@@ -9,3 +9,5 @@ export { default as ContextHook } from './useContext';
 export { default as MemoHook } from './useMemo';
 export { default as CustomHook } from './customHook';
 export { default as ReducerHook } from './useReducer';
+export { default as ClickCounter } from './clickCounter';
+export { default as HoverCounter } from './hoverCounter';
