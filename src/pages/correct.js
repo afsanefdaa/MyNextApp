@@ -10,8 +10,8 @@ import { Stomp } from '@stomp/stompjs';
 
 export const Weather = () => {
   // const [ client, setClient ] = useState({});
-   useEffect( () => {
-    const url = "ws://ws.weatherflow.com/swd/data";
+  useEffect( () => {
+    const url = "ws://sit.kiandigital.com:8082/market/live";
     const client = Stomp.client(url);
     console.log(client.connected, '_');
     const aaa = { "type":"listen_start", "device_id":1110, "id":"random-id-9305721718" }
@@ -28,14 +28,12 @@ export const Weather = () => {
     //   {},
     //   {},
     // );
-     client.connect({}, {}, () => {
-       client.send(url, {}, JSON.stringify(aaa));
+    client.connect({}, {}, () => {
+      console.log(client)
+      client.subscribe("/live/instrument/bid-ask/IRO1BMLT0001", message => {console.log(message)})
+    });
 
-       client.send(url, {}, JSON.stringify(aaa));
-       client.subscribe(url, message => {console.log(message)})
-     });
-
-     // await client.send(url, {}, JSON.stringify(message));
+    // await client.send(url, {}, JSON.stringify(message));
     //
     // await client.subscribe(url, function(msg) {
     //   console.log(msg, 'here')
