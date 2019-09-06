@@ -52,6 +52,7 @@ const CustomSider = () => {
           }
         >
           <Menu.Item key="weather"><Link href="/weather" as="/weather">Weather API</Link></Menu.Item>
+          <Menu.Item key="speed"><Link href="/speed" as="/speed">Simple Speed</Link></Menu.Item>
         </SubMenu>
         <SubMenu
           key="antd"
