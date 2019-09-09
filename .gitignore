@@ -5,3 +5,4 @@ yarn-error.log
 src/build
 .DS_Store
 .eslintrc
+.env
