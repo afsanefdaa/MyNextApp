@@ -22,13 +22,13 @@ const data = [
     key: '1',
     name: 'John Brown',
     age: 32,
-    address: 'New York No. 1 Lake Park'
+    address: 'New York No. 1 Lake Park',
   },
   {
     key: '2',
     name: 'Joe Black',
     age: 42,
-    address: 'London No. 1 Lake Park'
+    address: 'London No. 1 Lake Park',
   },
   {
     key: '3',
@@ -61,12 +61,10 @@ const Antd = () => {
       <Input
         placeholder="Search Name"
         value={value}
-        onChange={e => {
+        onChange={(e) => {
           const currValue = e.target.value;
           setValue(currValue);
-          const filteredData = data.filter(entry =>
-            entry.name.includes(currValue)
-          );
+          const filteredData = data.filter((entry) => entry.name.includes(currValue));
           setDataSource(filteredData);
         }}
       />
@@ -77,18 +75,18 @@ const Antd = () => {
     {
       title: FilterByNameInput,
       dataIndex: 'name',
-      key: '1'
+      key: '1',
     },
     {
       title: 'Age',
       dataIndex: 'age',
-      key: '2'
+      key: '2',
     },
     {
       title: 'Adress',
       dataIndex: 'address',
-      key: '3'
-    }
+      key: '3',
+    },
   ];
 
   return (
@@ -101,8 +99,8 @@ const Antd = () => {
           </FlexBox>
         )
       }
-      </>
-  )
-}
+    </>
+  );
+};
 
 export default Antd;

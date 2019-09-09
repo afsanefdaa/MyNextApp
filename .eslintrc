@@ -17,7 +17,7 @@
   "rules": {
     "indent": [
       "error",
-      4,
+      2,
       {
         "SwitchCase": 1
       }
@@ -38,8 +38,8 @@
     ],
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
-    "react/jsx-indent": ["error", 4],
-    "react/jsx-indent-props": ["error", 4],
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-indent-props": ["error", 2],
     "react/jsx-filename-extension": [
       1,
       {
@@ -59,7 +59,6 @@
     "jsx-a11y/no-static-element-interactions": "off",
     "react/destructuring-assignment": "off",
     "import/prefer-default-export": "off",
-    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
-    "allowSingleLineBlocks": ["always", {"allowSingleLineBlocks": true}]
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }]
   }
 }

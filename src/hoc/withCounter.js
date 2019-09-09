@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 
-const HigherOrderComponent = WrappedComponent => {
+const HigherOrderComponent = (WrappedComponent) => {
   class EnhancedComponent extends Component {
-
-    constructor(props){
+    constructor(props) {
       super(props);
 
       this.state = {
-        counter: 0
-      }
+        counter: 0,
+      };
     }
 
     incrementCount = () => {
-      this.setState(prevState => {
-        return { counter: prevState.counter + 1 }
-      })
+      this.setState((prevState) => ({ counter: prevState.counter + 1 }));
     };
 
     render() {
       const { counter } = this.state;
-      return(<WrappedComponent counter={counter} incrementCount={this.incrementCount}/>)
+      return (<WrappedComponent counter={counter} incrementCount={this.incrementCount} />);
     }
   }
   return EnhancedComponent;

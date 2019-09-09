@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import {Button, Divider} from 'antd';
+import { Button, Divider } from 'antd';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {Link} from "../../components";
+import { Link } from '../../components';
 
 
 const Vallinajs = () => {
   const router = useRouter();
   const { lesson } = router.query;
-  let code = undefined;
-  let explanation = undefined;
+  let code;
+  let explanation;
 
   switch (lesson) {
     case 'ofconst':
@@ -342,18 +342,17 @@ const Vallinajs = () => {
         identify.apply( me ); // KYLE
       `;
       break;
-
     case 'duplicate':
       explanation = (
         <>
          There are at least 5 (!) ways to clone an array:
-         <ul>
-           <li>loop</li>
-           <li>slice</li>
-           <li>Array.from()</li>
-           <li>concat</li>
-           <li>spread operator (FASTEST)</li>
-         </ul>
+          <ul>
+            <li>loop</li>
+            <li>slice</li>
+            <li>Array.from()</li>
+            <li>concat</li>
+            <li>spread operator (FASTEST)</li>
+          </ul>
         </>
       );
       code = `
@@ -382,9 +381,31 @@ const Vallinajs = () => {
       console.log(arr1,arr2,arr3,arr4);
       `;
       break;
-      default:
-        code = `console.log('default')`;
-        break;
+    case 'settimeout':
+      explanation = (
+        <>
+          It is possible to cancel the setTimeout before taking place (jQuery sample)
+        </>
+      );
+      code = `
+        let tID;
+        $(#setTimeout).click(() => {
+          tID = setTimeout(
+            () => {
+              console.log("from timeout") 
+            }
+            ,5000
+            )
+        })
+       
+        $(#celarit).click(() => {
+          clearTimeout(tID)
+        })
+      `;
+      break;
+    default:
+      code = 'console.log(\'default\')';
+      break;
   }
   return (
     <>
@@ -399,7 +420,7 @@ const Vallinajs = () => {
         {code}
       </SyntaxHighlighter>
     </>
-  )
-}
+  );
+};
 
 export default Vallinajs;

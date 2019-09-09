@@ -1,4 +1,5 @@
 /* eslint-disable */
+require('dotenv').config();
 const withPlugins = require('next-compose-plugins');
 const withLess = require('@zeit/next-less');
 const withSass = require('@zeit/next-sass');
@@ -13,6 +14,9 @@ const themeVariables = lessToJS(
 const nextConfig = {
   dir: './src',
   distDir: 'build',
+  env: {
+    'GITHUB_PERSONAL_ACCESS_TOKEN': process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
+  },
   webpack: (config, { isServer }) => {
     if (isServer) {
       const antStyles = /antd\/.*?\/style.*?/;

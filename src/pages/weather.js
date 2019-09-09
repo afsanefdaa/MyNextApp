@@ -20,7 +20,7 @@ export const Weather = () => {
 
   useEffect(() => {
     if (lastMessage !== null) {
-      setMessageList(prev => prev.concat(lastMessage));
+      setMessageList((prev) => prev.concat(lastMessage));
     }
   }, [lastMessage]);
 
@@ -31,8 +31,8 @@ export const Weather = () => {
     [CLOSED]: 'Closed',
   }[readyState];
 
-  let realData = undefined;
-  if(lastMessage) {
+  let realData;
+  if (lastMessage) {
     realData = JSON.parse(lastMessage.data);
   }
   const colors = {
@@ -43,26 +43,26 @@ export const Weather = () => {
   }[readyState];
 
   const stompCode = `
-    import React, { useState, useEffect  } from 'react';
-    import { Stomp } from '@stomp/stompjs';
-
-    export const Weather = () => {
-      useEffect( () => {
-        const url = 'ws://ws.weatherflow.com/swd/data?api_key=20c70eae-e62f-4d3b-b3a4-8586e90f3ac8';
-        const msg = '{ "type":"listen_stop", "device_id":1110, "id":"2098388936" }';
-        const client = Stomp.client(url);
-
-        client.connect({}, {}, () => {
-          client.subscribe(url, message => {console.log(message)})
+      import React, { useState, useEffect  } from 'react';
+      import { Stomp } from '@stomp/stompjs';
+  
+      export const Weather = () => {
+        useEffect( () => {
+          const url = 'ws://ws.weatherflow.com/swd/data?api_key=20c70eae-e62f-4d3b-b3a4-8586e90f3ac8';
+          const msg = '{ "type":"listen_stop", "device_id":1110, "id":"2098388936" }';
+          const client = Stomp.client(url);
+  
+          client.connect({}, {}, () => {
+            client.subscribe(url, message => {console.log(message)})
+          });
+  
         });
-
-      });
-      return(
-        <h1>Hello</h1>
-      )
-    };
-    export default Weather;
-  `
+        return(
+          <h1>Hello</h1>
+        )
+      };
+      export default Weather;
+    `;
 
   return (
     <div>
@@ -70,13 +70,13 @@ export const Weather = () => {
       <Card
         style={{ marginTop: 16 }}
         type="inner"
-        title={
-          <div style={{ display: 'flex',justifyContent:'space-around' }}>
+        title={(
+          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
             <Button type="primary" onClick={startHandler} disabled={readyState !== OPEN}>Send Start Listening Message</Button>
             <Badge count={`Status: ${connectionStatus}`} style={{ backgroundColor: colors }} />
-            <Button type="danger" onClick={stopHandler} disabled={readyState !== CLOSED}>Send Stop Listening Message</Button>
+            <Button type="danger" onClick={stopHandler} disabled={readyState === OPEN}>Send Stop Listening Message</Button>
           </div>
-        }
+        )}
       >
         {
           messageList.length !== 1 && (
@@ -86,8 +86,8 @@ export const Weather = () => {
           )
         }
       </Card>
-      <h1 style={{ marginTop: '40px'}}>
-        This is the same api with stompjs!
+      <h1 style={{ marginTop: '40px' }}>
+          This is the same api with stompjs!
       </h1>
       <SyntaxHighlighter language="javascript">
         {stompCode}

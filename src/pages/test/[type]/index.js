@@ -14,10 +14,10 @@ const Test = () => {
       {
         type === 'cypress' && (
           <div>
-            <Input onChange={(e) => setSomething(e.target.value)}/>
+            <Input onChange={(e) => setSomething(e.target.value)} />
             <p>About</p>
-            <button type="submit" onClick={() => setVisibility(!visibility) }>click</button>
-            <span className="test" style={{ display: visibility ? 'block' : 'none'}}>{someThing}</span>
+            <button type="submit" onClick={() => setVisibility(!visibility)}>click</button>
+            <span className="test" style={{ display: visibility ? 'block' : 'none' }}>{someThing}</span>
           </div>
         )
       }
@@ -28,8 +28,8 @@ const Test = () => {
           </div>
         )
       }
-      </>
-  )
-}
+    </>
+  );
+};
 
 export default Test;

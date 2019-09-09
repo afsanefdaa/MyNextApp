@@ -1,11 +1,16 @@
 import React from 'react';
-import HigherOrderComponent from './../hoc/withCounter';
+import HigherOrderComponent from '../hoc/withCounter';
 
-const HoverCounter = props => {
-  const { counter ,incrementCount } = props;
-  return(
-    <h1 onMouseOver={incrementCount}>Hover {counter} times on this piece of code!</h1>
-  )
+const HoverCounter = (props) => {
+  const { counter, incrementCount } = props;
+  return (
+    <h1 onMouseOver={incrementCount}>
+Hover
+      {counter}
+      {' '}
+times on this piece of code!
+    </h1>
+  );
 };
 
 export default HigherOrderComponent(HoverCounter);

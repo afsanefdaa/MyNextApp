@@ -1,19 +1,17 @@
 import React from 'react';
-import {ClickCounter, HoverCounter } from '../components';
-import { Divider } from "antd";
+import { Divider } from 'antd';
+import { ClickCounter, HoverCounter } from '../components';
 
-const HOC = () => {
-  return (
-    <>
-      <p>
+const HOC = () => (
+  <>
+    <p>
         an HOC component transforms a component into another component.
-      </p>
-      <Divider />
-      <ClickCounter />
-      <Divider />
-      <HoverCounter />
-     </>
-  )
-};
+    </p>
+    <Divider />
+    <ClickCounter />
+    <Divider />
+    <HoverCounter />
+  </>
+);
 
 export default HOC;
