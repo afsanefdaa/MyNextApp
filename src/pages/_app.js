@@ -1,18 +1,22 @@
-import React from 'react';
 import App, { Container } from 'next/app';
+import React from 'react';
+import { ClientContext } from 'graphql-hooks';
 import Layout from '../components/Layout';
+import withGraphQLClient from '../lib/with-graphql-client';
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, graphQLClient } = this.props;
     return (
-      <Container>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Container>
+      <ClientContext.Provider value={graphQLClient}>
+        <Container>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Container>
+      </ClientContext.Provider>
     );
   }
 }
 
-export default MyApp;
+export default withGraphQLClient(MyApp);
