@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Layout } from '../../components';
+import { withAuthSync } from '../../hoc/withAuth';
 
 class Animations extends Component {
   render() {
@@ -7,5 +9,5 @@ class Animations extends Component {
     );
   }
 }
-
-export default Animations;
+Animations.Layout = Layout;
+export default withAuthSync(Animations);

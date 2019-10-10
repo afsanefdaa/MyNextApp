@@ -1,6 +1,7 @@
 import React from 'react';
 import { Divider } from 'antd';
-import { ClickCounter, HoverCounter } from '../components';
+import { ClickCounter, HoverCounter, Layout } from '../components';
+import { withAuthSync } from '../hoc/withAuth';
 
 const HOC = () => (
   <>
@@ -14,4 +15,5 @@ const HOC = () => (
   </>
 );
 
-export default HOC;
+HOC.Layout = Layout;
+export default withAuthSync(HOC);

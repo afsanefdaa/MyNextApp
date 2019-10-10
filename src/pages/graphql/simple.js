@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Divider, Spin, Card, Tag,
 } from 'antd';
 import { useQuery } from 'graphql-hooks';
+import { Layout } from '../../components';
+import { withAuthSync } from '../../hoc/withAuth';
 
 const { Meta } = Card;
 
@@ -22,21 +24,14 @@ export const allPostsQuery = `
 `;
 
 const Simple = () => {
-  const [skip, setSkip] = useState(0);
-
-  const { loading, data, error } = useQuery(allPostsQuery, {
-    variables: { skip, first: 50 },
+  const { loading, data } = useQuery(allPostsQuery, {
+    variables: { skip: 0, first: 50 },
     updateData: (prevResult, result) => ({
       ...result,
       allPosts: [...prevResult.allPosts, ...result.allPosts],
     }),
   });
-  console.log(data);
-  // createdAt: "2019-09-09T17:24:48.000Z"
-  // id: "ck0cof15z0vn20165f2z3rgm5"
-  // title: "Formidable"
-  // url: "https://formidable.com"
-  // votes: 2
+
   return (
     <>
       <span>Simple sample</span>
@@ -65,4 +60,5 @@ const Simple = () => {
   );
 };
 
-export default Simple;
+Simple.Layout = Layout;
+export default withAuthSync(Simple);

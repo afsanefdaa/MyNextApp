@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Input, Table } from 'antd';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { Layout } from '../../../components';
+import { withAuthSync } from '../../../hoc/withAuth';
 
 const FlexBox = styled.div`
     margin: 20px;
@@ -103,4 +105,5 @@ const Antd = () => {
   );
 };
 
-export default Antd;
+Antd.Layout = Layout;
+export default withAuthSync(Antd);

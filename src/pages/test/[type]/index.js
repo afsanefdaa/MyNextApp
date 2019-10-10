@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Input } from 'antd';
 import { useRouter } from 'next/router';
+import { Layout } from '../../../components';
+import { withAuthSync } from '../../../hoc/withAuth';
 
 
 const Test = () => {
@@ -32,4 +34,5 @@ const Test = () => {
   );
 };
 
-export default Test;
+Test.Layout = Layout;
+export default withAuthSync(Test);

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+/* eslint-disable */
 
 const useDocumentTitle = (title) => {
   useEffect(() => {

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Router, useRouter } from 'next/router';
+import React from 'react';
+import { useRouter } from 'next/router';
 import { Tag } from 'antd';
+import { Layout } from '../../components';
+import { withAuthSync } from '../../hoc/withAuth';
 
 
 const Vallinajs = () => {
   const router = useRouter();
-  const { lesson } = router.query;
   const handleClick = (lesson) => {
     router.push('/[vanillajs]/[lesson]', `/vanillajs/${lesson}`, { shallow: true });
   };
@@ -21,12 +22,9 @@ const Vallinajs = () => {
         <Tag color="lime" onClick={() => handleClick('IIFE')}>IIFE</Tag>
         <Tag color="green" onClick={() => handleClick('this')}>This</Tag>
         <Tag color="cyan" onClick={() => handleClick('settimeout')}>setTimeout</Tag>
-        {/* <Tag color="blue">blue</Tag> */}
-        {/* <Tag color="geekblue">geekblue</Tag> */}
-        {/* <Tag color="purple">purple</Tag> */}
       </div>
     </>
   );
 };
-
-export default Vallinajs;
+Vallinajs.Layout = Layout;
+export default withAuthSync(Vallinajs);

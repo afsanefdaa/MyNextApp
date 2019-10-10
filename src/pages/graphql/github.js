@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { Button, Input, Divider } from 'antd';
+import { Layout } from '../../components';
+import { withAuthSync } from '../../hoc/withAuth';
 
 const TITLE = 'React GraphQL GitHub Client';
 
@@ -165,6 +168,7 @@ const resolveRemoveStarMutation = (mutationResult) => (state) => {
 };
 
 class Github extends Component {
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     path: 'the-road-to-learn-react/the-road-to-learn-react',
     organization: null,
@@ -186,7 +190,8 @@ class Github extends Component {
   };
 
   onFetchFromGitHub = (path, cursor) => {
-    getIssuesOfRepository(path, cursor).then((queryResult) => this.setState(resolveIssuesQuery(queryResult, cursor)));
+    getIssuesOfRepository(path, cursor)
+      .then((queryResult) => this.setState(resolveIssuesQuery(queryResult, cursor)));
   };
 
   onFetchMoreIssues = () => {
@@ -199,9 +204,11 @@ class Github extends Component {
 
   onStarRepository = (repositoryId, viewerHasStarred) => {
     if (viewerHasStarred) {
-      removeStarFromRepository(repositoryId).then((mutationResult) => this.setState(resolveRemoveStarMutation(mutationResult)));
+      removeStarFromRepository(repositoryId)
+        .then((mutationResult) => this.setState(resolveRemoveStarMutation(mutationResult)));
     } else {
-      addStarToRepository(repositoryId).then((mutationResult) => this.setState(resolveAddStarMutation(mutationResult)));
+      addStarToRepository(repositoryId)
+        .then((mutationResult) => this.setState(resolveAddStarMutation(mutationResult)));
     }
   };
 
@@ -213,6 +220,7 @@ class Github extends Component {
         <h1>{TITLE}</h1>
 
         <form onSubmit={this.onSubmit}>
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label htmlFor="url">
             Show open issues for https://github.com/
           </label>
@@ -314,4 +322,20 @@ const Repository = ({
   </div>
 );
 
-export default Github;
+Github.Layout = Layout;
+
+Organization.propTypes = {
+  organization: PropTypes.object.isRequired,
+  errors: PropTypes.array.isRequired,
+  onFetchMoreIssues: PropTypes.array.isRequired,
+  onStarRepository: PropTypes.array.isRequired,
+};
+
+Repository.propTypes = {
+  repository: PropTypes.object.isRequired,
+  onFetchMoreIssues: PropTypes.func.isRequired,
+  onStarRepository: PropTypes.func.isRequired,
+};
+
+
+export default withAuthSync(Github);

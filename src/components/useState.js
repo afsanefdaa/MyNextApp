@@ -13,12 +13,12 @@ const StateHook = () => {
       <div>
         <div>Available Candy</div>
         {candies.length === 0 ? (
-          <button onClick={() => setCandies(initialCandies)}>refill</button>
+          <button type="button" onClick={() => setCandies(initialCandies)}>refill</button>
         ) : (
           <ul>
             {candies.map((candy) => (
               <li key={candy}>
-                <button onClick={() => dispense(candy)}>grab</button>
+                <button type="button" onClick={() => dispense(candy)}>grab</button>
                 {' '}
                 {candy}
               </li>

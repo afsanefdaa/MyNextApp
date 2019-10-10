@@ -1,5 +1,6 @@
 import React from 'react';
 import HigherOrderComponent from '../hoc/withCounter';
+/* eslint-disable */
 
 const HoverCounter = (props) => {
   const { counter, incrementCount } = props;

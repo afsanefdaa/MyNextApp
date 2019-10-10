@@ -1,8 +1,9 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import {
-  StateHook, EffectHook, ContextHook, MemoHook, CustomHook, ReducerHook,
+  StateHook, EffectHook, ContextHook, MemoHook, CustomHook, ReducerHook, Layout,
 } from '../../../components';
+import { withAuthSync } from '../../../hoc/withAuth';
 
 const Hook = () => {
   const router = useRouter();
@@ -37,4 +38,5 @@ const Hook = () => {
   );
 };
 
-export default Hook;
+Hook.Layout = Layout;
+export default withAuthSync(Hook);

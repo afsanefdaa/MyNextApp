@@ -2,6 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import useWebSocket from 'react-use-websocket';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { Card, Button, Badge } from 'antd';
+import { Layout } from '../components';
+import { withAuthSync } from '../hoc/withAuth';
+
 
 const CONNECTING = 0;
 const OPEN = 1;
@@ -66,7 +69,7 @@ export const Weather = () => {
 
   return (
     <div>
-      <a href="https://weatherflow.github.io/SmartWeather/api/ws.html" target="_blank" role="norefferer noopener">Find WeatherFlow API Here</a>
+      <a rel="noopener noreferrer" href="https://weatherflow.github.io/SmartWeather/api/ws.html" target="_blank">Find WeatherFlow API Here</a>
       <Card
         style={{ marginTop: 16 }}
         type="inner"
@@ -81,7 +84,7 @@ export const Weather = () => {
         {
           messageList.length !== 1 && (
             <ul>
-              {messageList.map((message, idx) => <li key={idx}>{realData.type === 'obs_air' ? realData.summary.pressure_trend : null}</li>)}
+              {messageList.map((message, idx) => <li key={realData.type}>{realData.type === 'obs_air' ? realData.summary.pressure_trend : null}</li>)}
             </ul>
           )
         }
@@ -96,4 +99,5 @@ export const Weather = () => {
   );
 };
 
-export default Weather;
+Weather.Layout = Layout;
+export default withAuthSync(Weather);

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Layout as AntLayout, Breadcrumb } from 'antd';
+import { Layout as AntLayout } from 'antd';
 import { CustomSider, CustomHeader, CustomBreadcrumb } from '..';
 import style from './style.module.scss';
 
 const { Content } = AntLayout;
+/* eslint-disable */
 
 const Layout = (props) => {
   const { children } = props;

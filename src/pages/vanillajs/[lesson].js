@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { Button, Divider } from 'antd';
 import SyntaxHighlighter from 'react-syntax-highlighter';

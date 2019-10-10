@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import ReactSpeedometer from 'react-d3-speedometer';
+import { Layout } from '../components';
+import { withAuthSync } from '../hoc/withAuth';
 
-class App extends Component {
+class Speed extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,7 +17,7 @@ class App extends Component {
     const { endpoint } = this.state;
     // Very simply connect to the socket
     const socket = socketIOClient(endpoint);
-    // Listen for data on the "outgoing data" namespace and supply a callback for what to do when we get one. In this case, we set a state variable
+
     socket.on('outgoing data', (data) => this.setState({ response: data.num }));
   }
 
@@ -38,5 +40,5 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+Speed.Layout = Layout;
+export default withAuthSync(Speed);

@@ -3,7 +3,10 @@ import Head from 'next/head';
 import { getInitialState } from 'graphql-hooks-ssr';
 import initGraphQL from './init-graphql';
 
+/* eslint-disable */
+
 export default (App) => class GraphQLHooks extends React.Component {
+  // eslint-disable-next-line react/static-property-placement
     static displayName = 'GraphQLHooks(App)';
 
     static async getInitialProps(ctx) {
@@ -36,7 +39,6 @@ export default (App) => class GraphQLHooks extends React.Component {
           // Prevent GraphQL hooks client errors from crashing SSR.
           // Handle them in components via the state.error prop:
           // https://github.com/nearform/graphql-hooks#usequery
-          console.error('Error while running `getInitialState`', error);
         }
 
         // getInitialState does not call componentWillUnmount
@@ -56,6 +58,7 @@ export default (App) => class GraphQLHooks extends React.Component {
     }
 
     render() {
+      // eslint-disable-next-line react/jsx-props-no-spreading
       return <App {...this.props} graphQLClient={this.graphQLClient} />;
     }
 };

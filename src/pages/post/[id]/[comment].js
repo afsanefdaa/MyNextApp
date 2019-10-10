@@ -1,6 +1,7 @@
 import React from 'react';
 import Router, { useRouter } from 'next/router';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 
 let counter = 1;
 
@@ -17,7 +18,6 @@ const Comment = ({ initialPropsCounter }) => {
     const currentCounter = router.query.id || 0;
     const href = `/post/${Number(currentCounter) + 1}/halo`;
     Router.push('/post/[id]/[comment]', href, { shallow: true });
-    // console.log(Router.query, '--')
   };
 
   return (
@@ -38,14 +38,17 @@ const Comment = ({ initialPropsCounter }) => {
   );
 };
 
-export default Comment;
-
 Comment.getInitialProps = ({ res }) => {
   if (res) {
     return { initialPropsCounter: 1 };
   }
-  counter++;
+  counter += 1;
   return {
     initialPropsCounter: counter,
   };
 };
+
+Comment.propTypes = {
+  initialPropsCounter: PropTypes.number.isRequired,
+};
+export default Comment;

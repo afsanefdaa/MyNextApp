@@ -1,8 +1,9 @@
 import React from 'react';
 import { Layout as AntLayout, Menu } from 'antd';
-import style from './style.module.scss';
 
 const { Header } = AntLayout;
+
+/* eslint-disable */
 
 const CustomHeader = () => (
   <Header className="header">

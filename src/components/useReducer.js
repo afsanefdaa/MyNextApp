@@ -20,8 +20,8 @@ const ReducerHook = () => {
       Count:
       {' '}
       {state.count}
-      <button onClick={() => setState({ type: 'increment' })}>+</button>
-      <button onClick={() => setState({ type: 'decrement' })}>-</button>
+      <button type="button" onClick={() => setState({ type: 'increment' })}>+</button>
+      <button type="button" onClick={() => setState({ type: 'decrement' })}>-</button>
     </>
   );
 };
