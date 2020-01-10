@@ -7,7 +7,7 @@ import cookie from 'js-cookie';
 
 const login = ({ token }) => {
   cookie.set('token', token, { expires: 1 });
-  Router.push('/');
+  Router.push('/profile');
 };
 
 const logout = () => {

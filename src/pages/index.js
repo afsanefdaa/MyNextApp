@@ -1,57 +1,13 @@
 import React from 'react';
-import Router from 'next/router';
-import PropTypes from 'prop-types';
-import fetch from 'isomorphic-unfetch';
-import nextCookie from 'next-cookies';
-import { withAuthSync } from '../hoc/withAuth';
-import { getHost } from '../utility/uri';
+import { Link, Layout } from '../components';
 
+const Index = () => (
+  <>
+      Welcome
+    <Link href="/login">Login</Link>
+  </>
+);
 
-const Index = (props) => {
-  const {
-    name, login, bio, avatarUrl,
-  } = props.data;
+Index.Layout = Layout;
 
-  return (
-    <>
-      <img src={avatarUrl} alt="Avatar" />
-      <h1>{name}</h1>
-      <p className="lead">{login}</p>
-      <p>{bio}</p>
-    </>
-  );
-};
-
-Index.getInitialProps = async (ctx) => {
-  const { token } = nextCookie(ctx);
-  const apiUrl = `${getHost(ctx.req)}/api/profile`;
-
-  const redirectOnError = () => (typeof window !== 'undefined'
-    ? Router.push('/login')
-    : ctx.res.writeHead(302, { Location: '/login' }).end());
-
-  try {
-    const response = await fetch(apiUrl, {
-      credentials: 'include',
-      headers: {
-        Authorization: JSON.stringify({ token }),
-      },
-    });
-
-    if (response.ok) {
-      const js = await response.json();
-      return js;
-    }
-    // https://github.com/developit/unfetch#caveats
-    return await redirectOnError();
-  } catch (error) {
-    // Implementation or Network error
-    return redirectOnError();
-  }
-};
-
-Index.propTypes = {
-  data: PropTypes.object.isRequired,
-};
-
-export default withAuthSync(Index);
+export default Index;
