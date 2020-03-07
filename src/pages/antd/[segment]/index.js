@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Table } from 'antd';
+import { Input, Table, InputNumber } from 'antd';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { Layout } from '../../../components';
@@ -57,6 +57,7 @@ const Antd = () => {
   const { segment } = router.query;
   const [dataSource, setDataSource] = useState(data);
   const [value, setValue] = useState('');
+  const [number, setNumber] = useState(3);
 
   const FilterByNameInput = (
     <>
@@ -91,6 +92,24 @@ const Antd = () => {
     },
   ];
 
+  function onChange(vl) {
+    console.log(vl);
+    // setNumber(vl);
+  }
+
+  function formatter(vl) {
+    // console.log(typeof vl, '--f');
+    return `${vl}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function parser(vl) {
+    if (Number(vl.split(',').join(''))) {
+      return vl.replace(/\$\s?|(,*)/g, '');
+    }
+    const a = vl.match(/\d+/g).map(Number).join('');
+    return a.replace(/\$\s?|(,*)/g, '');
+  }
+
   return (
     <>
       {
@@ -99,6 +118,22 @@ const Antd = () => {
           <FlexBox>
             <Table columns={columns} dataSource={dataSource} />
           </FlexBox>
+        )
+      }
+      {
+        segment === 'inputNumber' && (
+          [
+            <h2>{number}</h2>,
+            <InputNumber
+              min={1}
+              max={10}
+              defaultValue={1000}
+              formatter={formatter}
+              parser={parser}
+              onChange={onChange}
+              style={{ width: '500px' }}
+            />,
+          ]
         )
       }
     </>
