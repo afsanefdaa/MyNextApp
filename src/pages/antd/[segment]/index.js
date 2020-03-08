@@ -103,11 +103,24 @@ const Antd = () => {
   }
 
   function parser(vl) {
-    if (Number(vl.split(',').join(''))) {
-      return vl.replace(/\$\s?|(,*)/g, '');
+    // if (Number(vl.split(',').join(''))) {
+    //   return vl.replace(/\$\s?|(,*)/g, '');
+    // }
+    // const a = vl.match(/\d+/g).map(Number).join('');
+    // return a.replace(/\$\s?|(,*)/g, '');
+    const reg = /^[0-9\b]+$/;
+    const regContainComma = /^.[-+]?(?:[0-9]+,)[0-9]+(?:\.[0-9]+)?.*$/;
+    if (vl.match(reg) || vl.match(regContainComma)) {
+      if (Number(vl.split(',').join('')) || vl === '') {
+        return vl.replace(/\$\s?|(,*)/g, '');
+      }
+      const a = vl
+        .match(/\d+/g)
+        .map(Number)
+        .join('');
+      return a.replace(/\$\s?|(,*)/g, '');
     }
-    const a = vl.match(/\d+/g).map(Number).join('');
-    return a.replace(/\$\s?|(,*)/g, '');
+    return null;
   }
 
   return (
