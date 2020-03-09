@@ -1,1 +1,2 @@
 export const SET_PROFILE_DATA = 'SET_PROFILE_DATA';
+export const SET_LOGGER_TEST = 'SET_LOGGER_TEST';
