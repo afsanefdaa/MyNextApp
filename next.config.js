@@ -3,6 +3,7 @@ require('dotenv').config();
 const withPlugins = require('next-compose-plugins');
 const withLess = require('@zeit/next-less');
 const withSass = require('@zeit/next-sass');
+const withCSS = require('@zeit/next-css');
 const lessToJS = require('less-vars-to-js');
 const fs = require('fs');
 const path = require('path');
@@ -44,6 +45,7 @@ const nextConfig = {
 
 
 module.exports = withPlugins([
+  [withCSS],
   [
     withLess, {
       lessLoaderOptions: {
