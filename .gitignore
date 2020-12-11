@@ -6,3 +6,4 @@ src/build
 .DS_Store
 .eslintrc
 .env
+build

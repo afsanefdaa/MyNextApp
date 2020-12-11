@@ -8,6 +8,28 @@ import { setProfileData } from '../../store/action';
 
 const Noop = ({ children }) => children;
 
+export function reportWebVitals(metric) {
+  switch (metric.name) {
+    case 'FCP':
+      console.log('handle FCP results', metric);
+      break;
+    case 'LCP':
+      console.log('handle LCP results', metric);
+      break;
+    case 'CLS':
+      console.log('handle CLS results', metric);
+      break;
+    case 'FID':
+      console.log('handle FID results', metric);
+      break;
+    case 'TTFB':
+      console.log('handle TTFB results', metric);
+      break;
+    default:
+      break;
+  }
+}
+
 class MyApp extends App {
   render() {
     const {
