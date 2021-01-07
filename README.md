@@ -13,23 +13,22 @@ yarn cypress
 
 ## Examples
 
-1.Move pages directory to src.
+* Move pages directory to src.
+* Less and sass compatibility.
+* React Hooks Leaning.
+* Websocket Leaning.
+* Graphql Leaning.
+* Ant Design Usage.
+* Some VanillaJs Code.
+* HOC Leaning.
+* Dynamic Routing With Next.
+* Upgrade NEXTJS to ^10.0.3.
+* ReportWebVitals
+* Check Slug route
+* Check i18n routing
+* Add circleCi integration
+* Github workflow Merge into master
 
-2.Less and sass compatibility.
-
-3.React Hooks Leaning.
-
-4.Websocket Leaning.
-
-5.Graphql Leaning.
-
-6.Ant Design Usage.
-
-7.Some VanillaJs Code.
-
-8.HOC Leaning.
-
-9.Dynamic Routing With Next.
 
 
 
